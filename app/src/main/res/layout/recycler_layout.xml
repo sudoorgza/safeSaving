@@ -11,7 +11,7 @@
       android:textAppearance="?android:attr/textAppearanceLarge"
       android:background="@color/background"
       android:textColor="?android:textColorPrimary"
-      android:id="@+id/recycler_text_view">
+      android:id="@+id/recycler_text_view2">
 
   </TextView>
 </LinearLayout>
