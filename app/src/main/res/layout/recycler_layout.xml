@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/recycler_state_background"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical" >
-  <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textAppearance="?android:attr/textAppearanceLarge"
-      android:background="@color/background"
-      android:textColor="?android:textColorPrimary"
-      android:id="@+id/recycler_text_view2">
-
-  </TextView>
+    android:orientation="horizontal" >
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="?android:colorPrimaryDark"
+        android:id="@+id/recycler_letter_view">
+    </TextView>
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="?android:textColorPrimary"
+        android:id="@+id/recycler_word_view">
+    </TextView>
 </LinearLayout>

@@ -13,7 +13,10 @@ public class MainActivity extends Activity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private String[] myDataset = {"Shout", "Approach", "Free", "Evaluate"};
+    private ActionModel[] myDataset = {new ActionModel("S","Shout","Shout to attract attention"),
+            new ActionModel("A","Approach","Approach with care"),
+            new ActionModel("F", "Free", "Free from danger"),
+            new ActionModel("E", "Evaluate", "Evaluate the potential patient")};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,12 @@ public class MainActivity extends Activity {
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
+//        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this,
+//                DividerItemDecoration.VERTICAL_LIST);
+//        mRecyclerView.addItemDecoration(itemDecoration);
+//        RecyclerView.ItemDecoration itemDecoration = new VerticalSpaceItemDecoration(4);
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, R.drawable.divider);
+        mRecyclerView.addItemDecoration(itemDecoration);
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -32,6 +41,7 @@ public class MainActivity extends Activity {
         // specify an adapter (see also next example)
         mAdapter = (RecyclerView.Adapter)(new ListAdapter(myDataset));
         mRecyclerView.setAdapter(mAdapter);
+
     }
 
     @Override

@@ -4,34 +4,35 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by hendrikschalekamp on 15/08/27.
  */
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
-    private String[] mDataset;
+    private ActionModel[] mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView mTextView;
-        //public LinearLayout mLayout;
-        //public ViewHolder(LinearLayout ll, TextView tv) {
-        //    super(ll);
-        //    mLayout = ll;
-        //    mTextView = tv;
-        //}
-        public ViewHolder(TextView v) {
-            super(v);
-            mTextView = v;
+        public TextView mLetterView;
+        public TextView mWordView;
+        public LinearLayout mLayout;
+        public ViewHolder(LinearLayout layout, TextView letterView, TextView wordView) {
+            super(layout);
+            mLayout = layout;
+            mWordView = wordView;
+            mLetterView = letterView;
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter(String[] myDataset) {
+    public ListAdapter(ActionModel[] myDataset) {
         mDataset = myDataset;
     }
 
@@ -40,15 +41,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
         //create a new view
-        View v = LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.recycler_text_view, parent, false);
-        //View v = LayoutInflater.from(parent.getContext())
-        //.inflate(R.layout.recycler_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
-        TextView tv = (TextView) v;
-        //LinearLayout ll = (LinearLayout) v;
-        return new ViewHolder(tv);
-        //return new ViewHolder(ll, tv);
+        LinearLayout layout = (LinearLayout)LayoutInflater.from(parent.getContext())
+        .inflate(R.layout.recycler_layout, parent, false);
+        TextView wordView = (TextView) layout.findViewById(R.id.recycler_word_view);
+        TextView letterView = (TextView) layout.findViewById(R.id.recycler_letter_view);
+
+        return new ViewHolder(layout, letterView, wordView);
     }
 
 
@@ -57,7 +55,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset[position]);
+        holder.mWordView.setText(mDataset[position].getWord());
+        holder.mLetterView.setText(mDataset[position].getLetter());
 
     }
 
