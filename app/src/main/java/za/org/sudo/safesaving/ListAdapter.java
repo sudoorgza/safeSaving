@@ -96,9 +96,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         Resources res = holder.mLayout.getContext().getResources();
         switch (mDataset[position].getLevel()) {
             case 0:
+                holder.mLayout.setBackgroundColor(res.getColor(R.color.background));
+                holder.mLetterView.setTextColor(res.getColor(R.color.primary_dark));
+                holder.mWordView.setTextColor(res.getColor(R.color.text_primary));
                 break;
             case 1:
                 holder.mLayout.setBackgroundColor(res.getColor(R.color.primary_light));
+                holder.mLetterView.setTextColor(res.getColor(R.color.primary_dark));
+                holder.mWordView.setTextColor(res.getColor(R.color.text_primary));
                 break;
             case 2:
                 holder.mLayout.setBackgroundColor(res.getColor(R.color.primary_dark));
